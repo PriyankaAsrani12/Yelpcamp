@@ -422,7 +422,7 @@ app.get("/logout",function(req,res){
 
 //==============================================
 //SERVER LISTENING
-app.listen(5000,process.env.IP,function(){
+app.listen(process.env.PORT || port,process.env.IP,function(){
     console.log("YelpCamp Started")
 });
 
