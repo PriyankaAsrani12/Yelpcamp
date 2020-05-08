@@ -1,0 +1,16 @@
+.thumbnail{
+    padding: 0;
+}
+.thumbnail caption-full{
+    padding: 9px;
+}
+#image{
+    object-fit: cover;
+    resize: both;
+    width: 100%;
+    height: auto;
+    max-width:100%;
+}
+#delete-form{
+    display:inline;
+}

@@ -1,0 +1,94 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/app.css">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">YelpCamp</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar-right">
+      <!--<li class="nav-item float-right">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+      <li class="nav-item float-right">
+        <a class="nav-link" href="/register">SignUp</a>
+      </li>!-->
+      <li class="nav-item float-right">
+        <a class="nav-link" href="/logout">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<%if(message.length>0){%>
+<div class="container">
+  <div class="alert alert-danger" role="alert">
+    <%=message%>
+  </div>
+</div>
+<%}%>
+<%if(mess.length>0){%>
+<div class="container">
+  <div class="alert alert-success" role="alert">
+    <%=mess%>
+  </div>
+</div>
+<%}%>
+<%var count=0%>
+<%for(var i=0;i<campground.length;i++){%>
+<%if(count==0){%>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <p class="lead">YelpCamp</p>
+      <div class="list-group">
+        <li class="list-group-item active">Info1</li>
+        <li class="list-group-item">Info2</li>
+        <li class="list-group-item">Info3</li>
+      </div>
+    </div>
+    <div class="jumbotron col-md-9">
+      <div class="thumbnail"><img class="image-responsive" id="image" src="<%=campground[i]["ImageURL"]%>"></div>
+      <div class="caption-full">
+        <h4 class="pull-right">$<%=campground[i]["price"]%>/night</h4>
+        <h2><a><%=campground[i]["Name"]%></a></h2>
+        <p>
+          <em>Created By <%=campground[i]["CreatedBy"]%></em>
+        </p>
+        <p><%=campground[i]["Description"]%></p>
+        <%if(campground[i]["CreatedBy"]==cg[0]["username"]){%>
+          <a class="btn btn-xs btn-warning" href="/campgrounds/<%=campground[i]["UserId"]%>/edit">Edit</a>
+          <form id="delete-form" action="/campgrounds/<%=campground[i]["UserId"]%>?_method=DELETE" method="POST">
+            <button class="btn btn-xs btn-danger">Delete</button> 
+          </form>
+        <%}else{%>
+          <%console.log("Else part")}%>
+      </div>
+      <div class="container">
+        <div class="jumbotron">
+        <div class="text-right">
+        <hr>
+          <a class="btn btn-success" href="/campgrounds/<%=campground[i]["UserId"]%>/comments/new">Add New Comment</a>
+          <hr>
+          <%count++%>
+          <%}if(count>=0){%>
+          <div class="row text-left">
+            <div class="col-md-12">
+              <p id="delete-form" class="pull-left"><strong><%=campground[i]["author"]%></strong> - <%=campground[i]["comments"]%></p>
+              <%if(campground[i]["author"]==cg[0]["username"]){%>
+              <a id="delete-form" class="btn btn-sm btn-warning" href="/campgrounds/<%=campground[i]["UserId"]%>/comments/<%=campground[i]["CommentId"]%>/edit"%>/edit">Edit</a>
+              <form id="delete-form" action="/campgrounds/<%=campground[i]["UserId"]%>/comments/<%=campground[i]["CommentId"]%>?_method=DELETE" method="POST">
+                <button class="btn btn-sm btn-danger">Delete</button> 
+              </form>
+              <%}else{%>
+              <%console.log("Else part")}%>
+              <%}%>
+              <%}%>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
